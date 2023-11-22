@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import titleImg from '../Assests/unix1.png'
 import ProjectCard from '../Components/ProjectCard'
 import { Link } from 'react-router-dom'
 
 function Home() {
+  const [loggedin,setLoggedin]=useState(false)
+  useEffect(()=>{
+    if(sessionStorage.getItem("token")){
+      setLoggedin(true)
+    }else{
+      setLoggedin(false)
+    }
+  },[])
   return (
     <>
     {/* langing section */}
@@ -14,7 +22,12 @@ function Home() {
           <h1 style={{fontSize:'80px'} } className='fw-bolder text-light'> <i className="fa-brands fa-stack-overflow fa-bounce"></i> UniX </h1>
           <p style={{color:'white'}}>One Stop Destination for all sowftware development projects. where user can add and manage their 
             projects .As wll as access all projects avaliable in our website... What are waiting for!!!!</p>
+           
+          {loggedin?
+            <Link to={'/dashboard'} className='btn btn-warning'> Manage Your Projects <i className="fa-solid fa-right-long fa-beat ms-2"></i></Link>:
+
             <Link to={'/login'} className='btn btn-warning'> Start to Explore <i className="fa-solid fa-right-long fa-beat ms-2"></i></Link>
+        }
         </Col>
         <Col sm={23 } md={6}>
          <img src={titleImg} alt="" style={{marginTop:'100px'}} className='w-100' />
