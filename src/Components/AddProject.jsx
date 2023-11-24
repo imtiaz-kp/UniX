@@ -10,11 +10,14 @@ import { addProjectAPI } from '../Services/allAPI';
 function AddProject() {
  const [token,setToken]=useState("")
     const [show, setShow] = useState(false);
+
 const handleClose = () =>{ setShow(false)
   setProjectDetails({
     title:"",languages:"",overview:"",github:"",website:"",projectImage:""
   })
-  setPreview("")}
+  setPreview("")
+}
+
 const handleShow = () => setShow(true);
 const [projectDetails,setProjectDetails]=useState({
   title:"",languages:"",overview:"",github:"",website:"",projectImage:""
@@ -49,12 +52,12 @@ const hadleAdd=async(e)=>{
     }
     const result = await addProjectAPI(reqBody,reqHeader)
     if(result.status===200){
-      console.log(result.data)
+      
       handleClose()
       alert("project added")
 
     }else{
-      console.log(result)
+     
       toast.warning(result.response.data)
     }
   }
