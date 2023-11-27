@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
   import "react-toastify/dist/ReactToastify.css";
 import AddProject from './AddProject'
-import { userProjectAPI } from '../Services/allAPI'
+import { deleteProjectAPI, userProjectAPI } from '../Services/allAPI'
 import Projects from '../Pages/Projects';
-
-
+import { addProjectResponseContext, editProjectResponsContext } from '../Contexts/ContextShare';
+import { Alert } from 'react-bootstrap';
+import EditProject from './EditProject';
 
 function MyProjects() {
+    const {addProjectRespon,setAddProjectResponse}=useContext(addProjectResponseContext)
+    const {editProjectRespons,setEditProjectResponse}=useContext(editProjectResponsContext)
     const [userProjects,setUserProjects]=useState([])
     const getUserProjects=async()=>{
         if(sessionStorage.getItem("token")){
@@ -24,25 +27,44 @@ function MyProjects() {
         }
     }
     }
+   const handleDelete=async (id)=>{
+    const token=sessionStorage.getItem("token")
+    const reqHeader={
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+    }
+    const result = await deleteProjectAPI(id,reqHeader)
+    if(result.status===200){
+        //page reload
+        getUserProjects()
+    }else{
+        toast.error(result.response.data)
+    }
+   }
+ 
+
     useEffect(()=>{
         getUserProjects()
-    },[])
+    },[addProjectRespon,editProjectRespons])
   return (
     <div className='card shadow p-2 mb-3 '>
         <div className='d-flex'>
             <h3>My Projects</h3>
             <div className='ms-auto'> <AddProject /></div>
         </div>
+        {/* {   addProjectRespon.title?<Alert className='bg-success' dismissible>
+            <p><span className='fw-bolder text-danger'>{addProjectRespon.title}</span>  added successfully!!!</p></Alert>:null
+        } */}
         <div className='mt-5'>
             {/* conllection of user projects */}
            {userProjects?.length>0?userProjects.map(Project=>(
-            <div className='border d-flex align-items-center rounded p-2'>
+            <div className='border d-flex align-items-center rounded p-2 mt-3'>
                 <h5>{Project?.title}</h5>
-                <div  className='icon ms-auto'>
+                <div  className='icon ms-auto d-flex mt-2' >
                    
-                    <a><button className='btn '><i className="fa-solid fa-pen-to-square fa-2x" ></i></button></a>
+                    <EditProject Project={Project} />
                     <a href={`${Project.github}` } target='_blank' className='btn '><i className="fa-brands fa-github fa-2x"></i></a>
-                    <button className='btn '><i className="fa-solid fa-trash fa-2x"></i></button>
+                    <button onClick={()=>handleDelete(Project._id)} className='btn '><i className="fa-solid fa-trash fa-2x"></i></button>
                 </div>
                 
             </div>)):

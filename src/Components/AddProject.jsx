@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { toast, ToastContainer } from 'react-toastify';
   import "react-toastify/dist/ReactToastify.css";
 import { addProjectAPI } from '../Services/allAPI';
+import { addProjectResponseContext } from '../Contexts/ContextShare';
 
 
 function AddProject() {
+  const {addProjectRespon,setAddProjectResponse}=useContext(addProjectResponseContext)
  const [token,setToken]=useState("")
     const [show, setShow] = useState(false);
 
@@ -55,7 +57,7 @@ const hadleAdd=async(e)=>{
       
       handleClose()
       alert("project added")
-
+       setAddProjectResponse(result.data)
     }else{
      
       toast.warning(result.response.data)
