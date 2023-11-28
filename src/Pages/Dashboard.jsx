@@ -3,7 +3,6 @@ import Header from '../Components/Header'
 import { Col, Row } from 'react-bootstrap'
 import MyProjects from '../Components/MyProjects'
 import Profile from '../Components/Profile'
-import { tokenAuthorisationContext } from '../Contexts/TokenAuth'
 
 
 
@@ -14,7 +13,6 @@ function Dashboard() {
       setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
     }
   },[])
-  const {isAuthorized,setIsAuthorized}=useContext(tokenAuthorisationContext)
 
   return (
     <>

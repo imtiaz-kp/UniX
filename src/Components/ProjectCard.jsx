@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col, Modal, Row } from 'react-bootstrap'
 import projectImg from '../Assests/pro.png'
 import { BASE_URL } from '../Services/baseurl';
@@ -32,6 +32,7 @@ function ProjectCard({project}) {
                         <h2 >{project?.title}</h2>
                         <p>Project Overview: {project?.overview}</p>
                         <p>Lnguage Used: <span className='fw-bolder'>{project?.languages}</span></p>
+                        <p> Created by: <span>{project?.userName}</span></p>
                         
                     </Col>
                     <div className="mt-3">

@@ -95,7 +95,7 @@ function Profile() {
         <>
             <div className='card shadow p-5 mb-3'>
                 <div className='d-flex justify-content-between '>
-                    <h2>profile</h2>
+                    <h2>Profile</h2>
                     <button onClick={() => setOpen(!open)} className="btn btn-outline-info"><i class="fa-solid fa-chevron-down fa-beat-fade"></i></button>
                 </div>
 
@@ -115,6 +115,7 @@ function Profile() {
                         <div className='mt-3' >
                             <input type="text" className='form-control' placeholder='LinkedIn' value={userProfile.linkedin} onChange={e => setUserProfile({ ...userProfile, linkedin: e.target.value })} />
                         </div>
+                        
                         <div className='mt-3 text-center d-grid' >
                             <button type="text" className='btn btn-warning' placeholder='LinkedIn' onClick={handleProfileUpdate}>Update</button>
                         </div>

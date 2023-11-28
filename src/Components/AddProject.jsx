@@ -9,6 +9,8 @@ import { addProjectResponseContext } from '../Contexts/ContextShare';
 
 
 function AddProject() {
+  const[ username,setUsername]=useState("")
+
   const {addProjectRespon,setAddProjectResponse}=useContext(addProjectResponseContext)
  const [token,setToken]=useState("")
     const [show, setShow] = useState(false);
@@ -46,12 +48,15 @@ const hadleAdd=async(e)=>{
     reqBody.append("projectImage",projectImage)
     reqBody.append("github",github)
     reqBody.append("website",website)
+    reqBody.append("userName",username)
 
    if(token){ 
     const reqHeader={
       "Content-Type":"multipart/form-data",
       "Authorization":`Bearer ${token}`
     }
+   
+    
     const result = await addProjectAPI(reqBody,reqHeader)
     if(result.status===200){
       
@@ -71,6 +76,11 @@ useEffect((e)=>{
     setToken(sessionStorage.getItem("token"))
   }else{
     setToken("")
+  }
+},[])
+useEffect(()=>{
+  if(sessionStorage.getItem("existingUser")){
+    setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
   }
 },[])
   return (
