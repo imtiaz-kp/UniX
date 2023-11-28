@@ -8,7 +8,9 @@ function Header({insideHeader}) {
 
   const navigate=useNavigate()
   const handleLogout=()=>{
-    setIsAuthorized(false)
+    
+      setIsAuthorized(false)
+    
     sessionStorage.removeItem("existingUser")
     sessionStorage.removeItem("token")
     //navigate to landing page
@@ -18,7 +20,7 @@ function Header({insideHeader}) {
     <Navbar style={{backgroundColor:'rgb(106, 27, 154)'}}>
         <Container>
           <Navbar.Brand>
-         <Link to={'/'} style={{textDecoration:'none',color:'white'}} className='fw-bolder fs-4 '> <i className="fa-brands fa-stack-overflow fa-bounce"></i> UniX</Link>
+         <Link to={'/'} style={{textDecoration:'none',color:'white'}} className='fw-bolder fs-4 '> <i className="fa-brands fa-stack-overflow fa-bounce"></i> UniX-HuB</Link>
          
           </Navbar.Brand>
           { insideHeader &&

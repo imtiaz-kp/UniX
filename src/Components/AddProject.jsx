@@ -31,7 +31,7 @@ useEffect(()=>{
   }
 
 },[projectDetails.projectImage])
-console.log(projectDetails)
+
 
 const hadleAdd=async(e)=>{
   e.preventDefault()

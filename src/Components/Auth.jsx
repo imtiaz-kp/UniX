@@ -43,8 +43,10 @@ function Auth({ register }) {
         }else{
              const result = await loginAPI(userData)
              if(result.status===200){
-                console.log(result)
                 setIsAuthorized(true)
+                    
+                
+              
               sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
               sessionStorage.setItem("token",result.data.token)
             setUserData({

@@ -10,24 +10,26 @@ function ProjectCard({project}) {
   return (
     <> 
     {project&& 
-        <Card className='shadow mb-5  btn ' onClick={handlleShow}>
-        <Card.Img variant="top" src={project?`${BASE_URL}/uploads/${project?.projectImage}`:projectImg} />
-        <Card.Body>
-          <Card.Title>{project?.title}</Card.Title>
+        <Card  className='shadow mb-5  btn ' style={{height:"300px",overflowY:"hidden"}} onClick={handlleShow}>
+        <Card.Img variant="top"  src={project?`${BASE_URL}/uploads/${project?.projectImage}`:projectImg} />
+        <Card.Body style={{overflowY:"hidden"}}>
+          <Card.Title >{project?.title}</Card.Title>
         </Card.Body>
       </Card>}
       
       <Modal size='lg' show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>{project?.title}</Modal.Title>
+              <Modal.Title >{project?.title}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                <Row>
+            <Modal.Body >
+                <Row >
                     <Col md={6}>
-                    <img className='img-fluid' style={{height:'200px'}} src={project?`${BASE_URL}/uploads/${project?.projectImage}`:projectImg} alt="project image" />
-                    </Col>
+
+                      <img  className='img-fluid'  src={project?`${BASE_URL}/uploads/${project?.projectImage}`:projectImg} alt="project image" />
+  
+                  </Col>
                     <Col md={6}>
-                        <h2>{project?.title}</h2>
+                        <h2 >{project?.title}</h2>
                         <p>Project Overview: {project?.overview}</p>
                         <p>Lnguage Used: <span className='fw-bolder'>{project?.languages}</span></p>
                         

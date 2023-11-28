@@ -3,8 +3,10 @@ import Header from '../Components/Header'
 import { Col, Row } from 'react-bootstrap'
 import ProjectCard from '../Components/ProjectCard'
 import { allProjectsAPI } from '../Services/allAPI'
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 function Projects() {
+  
   const [searchKey,setSearchKey]=useState("")
   const [allProjects,setAllProjects]=useState([])
   const getAllProjects=async()=>{
@@ -17,7 +19,7 @@ function Projects() {
       if(result.status===200){
         setAllProjects(result.data)
       }else{
-        console.log(result)
+        toast.error(result)
       }
       
     }
@@ -38,7 +40,7 @@ function Projects() {
 
       </div>
     </div>
-    <Row className="mt-5 container-fluid">
+    <Row className="mt-5 container-fluid p-4">
      {allProjects?.length>0?allProjects?.map(project=>( 
      <Col sm={12} md={6} lg={4}>
       <ProjectCard project={project}/>

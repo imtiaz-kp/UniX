@@ -7,8 +7,11 @@ import Projects from '../Pages/Projects';
 import { addProjectResponseContext, editProjectResponsContext } from '../Contexts/ContextShare';
 import { Alert } from 'react-bootstrap';
 import EditProject from './EditProject';
+import { tokenAuthorisationContext } from '../Contexts/TokenAuth';
 
 function MyProjects() {
+
+
     const {addProjectRespon,setAddProjectResponse}=useContext(addProjectResponseContext)
     const {editProjectRespons,setEditProjectResponse}=useContext(editProjectResponsContext)
     const [userProjects,setUserProjects]=useState([])
@@ -22,7 +25,7 @@ function MyProjects() {
         if(result.status===200){
             setUserProjects(result.data)
         }else{
-            console.log(result);
+           
             toast.warning(result.response.data)
         }
     }
@@ -45,6 +48,8 @@ function MyProjects() {
 
     useEffect(()=>{
         getUserProjects()
+        
+        
     },[addProjectRespon,editProjectRespons])
   return (
     <div className='card shadow p-2 mb-3 '>
@@ -52,9 +57,7 @@ function MyProjects() {
             <h3>My Projects</h3>
             <div className='ms-auto'> <AddProject /></div>
         </div>
-        {/* {   addProjectRespon.title?<Alert className='bg-success' dismissible>
-            <p><span className='fw-bolder text-danger'>{addProjectRespon.title}</span>  added successfully!!!</p></Alert>:null
-        } */}
+        
         <div className='mt-5'>
             {/* conllection of user projects */}
            {userProjects?.length>0?userProjects.map(Project=>(

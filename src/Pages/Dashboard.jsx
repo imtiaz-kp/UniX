@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../Components/Header'
 import { Col, Row } from 'react-bootstrap'
 import MyProjects from '../Components/MyProjects'
 import Profile from '../Components/Profile'
+import { tokenAuthorisationContext } from '../Contexts/TokenAuth'
 
 
 
@@ -13,21 +14,25 @@ function Dashboard() {
       setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
     }
   },[])
+  const {isAuthorized,setIsAuthorized}=useContext(tokenAuthorisationContext)
+
   return (
     <>
-      <Header insideHeader />
-      <Row className='container-fluid mt-4' >
-      <Col sm={12} md={8} lg={8}>
-        {/* my project */}
-
-        <h2>Welcome <span className='text-warning'>{username}</span></h2>
-        <MyProjects/>
-      </Col>
-      <Col sm={12} md={8}  lg={4}>
-        {/* my profile */}
-        <Profile/>
-      </Col>
-      </Row>
+      <>
+        <Header insideHeader />
+        <Row className='container-fluid mt-4' >
+        <Col sm={12} md={8} lg={8}>
+          {/* my project */}
+  
+          <h2>Welcome <span className='text-warning'>{username}</span></h2>
+          <MyProjects/>
+        </Col>
+        <Col sm={12} md={8}  lg={4} className='mt-5'>
+          {/* my profile */}
+          <Profile/>
+        </Col>
+        </Row>
+      </>
     
     </>
     )

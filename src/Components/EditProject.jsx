@@ -48,7 +48,7 @@ function EditProject({Project}) {
                   //pass response to my projects
                   setEditProjectResponse(result.data)
                 }else{
-                     console.log(result);
+                   
                      toast.error(result.response.data)
                     
                 }
@@ -65,7 +65,7 @@ function EditProject({Project}) {
                   //pass response to my projects
                   setEditProjectResponse(result.data)
                 }else{
-                     console.log(result);
+               
                      toast.error(result.response.data)
                      
                 }
@@ -81,9 +81,7 @@ function EditProject({Project}) {
    
 
   return (
-    <><button onClick={handleShow} className='btn'><i className='fa-solid fa-pen-to-square fa-2x'></i></button>
-    
-    
+    <><button onClick={handleShow} className='btn'><i className='fa-solid fa-pen-to-square fa-2x'></i></button>    
           <Modal
             show={show}
             onHide={handleClose}
