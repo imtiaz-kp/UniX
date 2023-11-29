@@ -61,7 +61,7 @@ const hadleAdd=async(e)=>{
     if(result.status===200){
       
       handleClose()
-      alert("project added")
+      toast.success("project added")
        setAddProjectResponse(result.data)
     }else{
      

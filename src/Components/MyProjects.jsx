@@ -5,9 +5,7 @@ import AddProject from './AddProject'
 import { deleteProjectAPI, userProjectAPI } from '../Services/allAPI'
 import Projects from '../Pages/Projects';
 import { addProjectResponseContext, editProjectResponsContext } from '../Contexts/ContextShare';
-import { Alert } from 'react-bootstrap';
 import EditProject from './EditProject';
-import { tokenAuthorisationContext } from '../Contexts/TokenAuth';
 
 function MyProjects() {
 

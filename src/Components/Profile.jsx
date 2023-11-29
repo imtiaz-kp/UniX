@@ -95,7 +95,7 @@ function Profile() {
         <>
             <div className='card shadow p-5 mb-3'>
                 <div className='d-flex justify-content-between '>
-                    <h2>Profile</h2>
+                    <h2 className='ms-5'> Profile</h2>
                     <button onClick={() => setOpen(!open)} className="btn btn-outline-info"><i class="fa-solid fa-chevron-down fa-beat-fade"></i></button>
                 </div>
 
@@ -109,6 +109,12 @@ function Profile() {
                                 <img width={'200px'} height={'200px'} className='rounded-circle' src={preview ? preview : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1vNcnuDrDcWb-fg4zotZPU0uoCCsO7j_T2BKFxdo6qASgQXXtIwcIjgDPbT7AnO505KE&usqp=CAU`} alt="upload picture" />
                             }
                         </label>
+                        <div className='mt-3 ' >
+                            <input style={{color:"gray"}} type="text" className='form-control' placeholder='GitHub' value={userProfile.username} />
+                        </div>
+                        <div className='mt-3 ' >
+                            <input style={{color:"gray"}} type="text" className='form-control' placeholder='GitHub' value={userProfile.email} />
+                        </div>
                         <div className='mt-3'>
                             <input type="text" className='form-control' placeholder='GitHub' value={userProfile.github} onChange={e => setUserProfile({ ...userProfile, github: e.target.value })} />
                         </div>
