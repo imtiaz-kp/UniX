@@ -19,7 +19,7 @@ function App() {
        <Route path='/login' element={<Auth />} />
        <Route path='/register' element={  <Auth register/>} />
        <Route path='/dashboard' element={isAuthorized ?  <Dashboard/>:<Home/>} />
-       <Route path='/projects' element={isAuthorized?  <Projects/>:<Home/>} /> 
+       <Route path='/projects' element={  <Projects/>} /> 
        <Route path='/*' element={<Navigate to={'/'}/>} /> 
      </Routes>
     < Footer/>

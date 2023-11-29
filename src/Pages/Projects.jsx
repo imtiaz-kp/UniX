@@ -49,7 +49,7 @@ function Projects() {
        
       </Col>)):<p style={{fontSize:'30px'}} className='fw-bolder text-danger m-5 text-center'>No Results</p>
       }
-    </Row>:<p style={{fontSize:'60px'}} className='fw-bolder text-danger m-5 text-center'>Please Login To view all Projects!!!</p>
+    </Row>:<div><p style={{fontSize:'60px'}} className='fw-bolder text-danger m-5 text-center'>Please Login To view all Projects!!!</p></div>
  } </div>
    </>
   )
