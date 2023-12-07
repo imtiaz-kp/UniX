@@ -1,39 +1,37 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Header from '../Components/Header'
-import { Col, Row } from 'react-bootstrap'
-import MyProjects from '../Components/MyProjects'
-import Profile from '../Components/Profile'
-
-
+import React, { useContext, useEffect, useState } from 'react';
+import Header from '../Components/Header';
+import { Col, Row } from 'react-bootstrap';
+import MyProjects from '../Components/MyProjects';
+import Profile from '../Components/Profile';
 
 function Dashboard() {
-  const[ username,setUsername]=useState("")
-  useEffect(()=>{
-    if(sessionStorage.getItem("existingUser")){
-      setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    if (sessionStorage.getItem('existingUser')) {
+      setUsername(JSON.parse(sessionStorage.getItem('existingUser')).username);
     }
-  },[])
+  }, []);
 
   return (
     <>
-      <>
-        <Header insideHeader />
-        <Row className='container-fluid mt-4' >
-        <Col sm={12} md={8} lg={8}>
+      <Header insideHeader />
+      <Row className='container-fluid mt-4'>
+        {/* Adjust column sizes based on screen width */}
+        <Col sm={12} md={12} lg={8}>
           {/* my project */}
-  
-          <h2>Welcome <span className='text-warning'>{username}</span></h2>
-          <MyProjects/>
+          <h2>
+            Welcome <span className='text-warning'>{username}</span>
+          </h2>
+          <MyProjects />
         </Col>
-        <Col sm={12} md={8}  lg={4} className='mt-5'>
+        <Col sm={12} md={12} lg={4} className='mt-5'>
           {/* my profile */}
-          <Profile/>
+          <Profile />
         </Col>
-        </Row>
-      </>
-    
+      </Row>
     </>
-    )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
